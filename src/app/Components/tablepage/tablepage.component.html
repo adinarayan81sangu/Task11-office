@@ -1,0 +1,38 @@
+<h1>UserName is:{{data}}</h1>
+<div *ngIf="!selectddata" class="container mt-5">
+    <table class="table  table-striped ">
+        <thead>
+            <tr>
+                <th >Project-Id</th>
+                <th >Project_Name</th>
+                <th >Project-Head</th>
+                <th>Start Date</th>
+                <th>Actions</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let x of  projects">
+                <td>{{x.projectId}}</td>
+                <td>{{x.projectName}}</td>
+                <td>{{x.projectHead}}</td>
+                <td>{{x.startDate}}</td>
+                <td>
+                    <button class="btn btn-success" (click)="editdata(x.projectId)"> Update</button>
+                    &nbsp;
+                    <button class="btn btn-danger" (click)="deletedata(x.projectId)"> delete</button>
+                    <button class="btn btn-danger ml-2" (click)="Viewdata(x.projectId)" routerLink="/Viewpage">View</button>
+                      
+                </td>
+            </tr>
+        </tbody>
+        <tfoot> <button type="button" routerLink="Adduser" class="btn btn-primary m-5">
+                Add Project
+            </button></tfoot>
+    </table>
+
+</div>
+<div *ngIf="selectddata">
+    <app-template-form [parentdata]="selectddata"></app-template-form>
+</div>
+
